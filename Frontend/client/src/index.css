@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "ZenMaruGothic-Black";
+  src: url('../static/fonts/ZenMaruGothic-Black.ttf');
+
+  font-family: "ZenMaruGothic-Regular";
+  src: url('../static/fonts/ZenMaruGothic-Regular.ttf');
+
+}
