@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'zenmarugothic-black': ['ZenMaruGothic-Black','sans-serif'],
-        'zenmarugothic-regular': ['ZenMaruGothic-Regular','sans-serif'],
+        'RubikRegular': ['Rubik-Regular','sans-serif'],
+        'RobotoRegular': ['Roboto-Regular','sans-serif'],
       },
     },
   },

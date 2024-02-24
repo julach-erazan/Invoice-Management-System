@@ -3,10 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "ZenMaruGothic-Black";
-  src: url('../static/fonts/ZenMaruGothic-Black.ttf');
+  font-family: "Rubik-Regular";
+  src: url('../static/fonts/Rubik-Regular.ttf');
 
-  font-family: "ZenMaruGothic-Regular";
-  src: url('../static/fonts/ZenMaruGothic-Regular.ttf');
+  font-family: "Roboto-Regular";
+  src: url('../static/fonts/Roboto-Regular.ttf');
+}
 
+input{
+  border: 3px solid #0F171A;
+}
+
+input:focus{
+  outline: none;
+  border: 3px solid #01579B;
 }
