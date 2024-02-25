@@ -4,22 +4,21 @@ import TitleSection from "../home/homeComponents/TitleSection";
 import { validateInputs } from "../../controller/validateInputs";
 
 const SignUpUser = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const phoneNumberRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const confPasswordRef = useRef()
+  const confPasswordRef = useRef();
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
 
     //Validate User Inputs
@@ -65,7 +64,7 @@ const SignUpUser = () => {
               onChange={(e) => {
                 setFirstName(e.target.value);
               }}
-              ref = { firstNameRef }
+              ref={firstNameRef}
             />
             <input
               className="w-[45%] lg:w-[100%] h-[30px] rounded-[15px] p-[18px] mb-[20px]"
@@ -74,7 +73,7 @@ const SignUpUser = () => {
               onChange={(e) => {
                 setLastName(e.target.value);
               }}
-              ref = { lastNameRef }
+              ref={lastNameRef}
             />
           </div>
 
@@ -86,7 +85,7 @@ const SignUpUser = () => {
               onChange={(e) => {
                 setPhoneNumber(e.target.value);
               }}
-              ref = { phoneNumberRef }
+              ref={phoneNumberRef}
             />
 
             <input
@@ -96,7 +95,7 @@ const SignUpUser = () => {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              ref = { emailRef }
+              ref={emailRef}
             />
           </div>
 
@@ -108,7 +107,7 @@ const SignUpUser = () => {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              ref = { passwordRef }
+              ref={passwordRef}
             />
 
             <input
@@ -118,7 +117,7 @@ const SignUpUser = () => {
               onChange={(e) => {
                 setConfirmPassword(e.target.value);
               }}
-              ref = { confPasswordRef }
+              ref={confPasswordRef}
             />
           </div>
 
