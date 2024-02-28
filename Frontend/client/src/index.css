@@ -9,12 +9,3 @@
   font-family: "Roboto-Regular";
   src: url('../static/fonts/Roboto-Regular.ttf');
 }
-
-input{
-  border: 3px solid #0F171A;
-}
-
-input:focus{
-  outline: none;
-  border: 3px solid #01579B;
-}

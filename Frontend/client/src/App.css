@@ -1,0 +1,23 @@
+input{
+    background-color: rgba(255, 255, 255, 0.068);
+    border: 2px solid rgba(255, 255, 255, 0.158);
+    color: #fff;
+  }
+  
+  input:focus{
+    outline: none;
+    border: 2px solid #01579B;
+  }
+
+  
+  input.input-error,
+  select.input-error{
+    border-color: #fc8181;
+  }
+
+  .error{
+    color: #fc8181;
+    font-size: 12px;
+    padding-left: 10px;
+    width: 100%;
+  }

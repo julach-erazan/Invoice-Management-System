@@ -1,47 +1,31 @@
-import { useState } from "react";
-import { React, useRef } from "react";
+import { React } from "react";
 import { Link } from "react-router-dom";
-import {
-  setSuccess,
-  setError,
-  validateMailFormat,
-  validatePhoneNumberFormat,
-  validatePasswordFormat,
-} from "../../controller/validateInputs";
+import { useFormik } from "formik";
+import { loginFormSchema } from "./schemas/loginFormSchema";
+import { useNavigate } from "react-router-dom";
+import { formLogin } from "../../controller/formLogin";
 
 const LoginUser = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    if (email == "") {
-      //email validation
-      setError(emailRef, "Email");
-    } else {
-      if (validateMailFormat(emailRef)) {
-        setSuccess(emailRef);
-      } else {
-        setError(emailRef, "Email");
-      }
-    }
-
-    if (password == "") {
-      //password validation
-      setError(passwordRef, "Password");
-    } else {
-      setSuccess(passwordRef);
-      if (validatePasswordFormat(passwordRef)) {
-        setSuccess(passwordRef);
-      } else {
-        setError(passwordRef, "Password");
-      }
-    }
+  const onSubmit = (value, actions) => {
+    actions.resetForm(); //Reset form data
+    formLogin(
+      value.email,
+      value.password
+    );
+    navigate('/dashboard')
   };
+
+  const { values, handleBlur, errors, touched, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: loginFormSchema,
+      onSubmit,
+    });
 
   return (
     <div className="w-[45vw] min-w-[400px] h-[400px] flex flex-col justify-center items-center text-white">
@@ -52,43 +36,60 @@ const LoginUser = () => {
         Login to Dashboard
       </h2>
 
-      <form
-        action=""
-        className="w-full text-[15px] flex flex-col justify-evenly items-center text-black mt-[40px]"
-      >
-        <input
-          className="w-[80%] h-[30px] lg:w-[60%] rounded-[15px] p-[18px] mb-[20px]"
-          type="text"
-          placeholder="Email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          ref={emailRef}
-        />
-        <input
-          className="w-[80%] h-[30px] lg:w-[60%] rounded-[15px] p-[18px] mb-[40px]"
-          type="password"
-          placeholder="Password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          ref={passwordRef}
-        />
-
-        <button
-          className="w-[40%] h-[40px] text-white font-black rounded-[15px] bg-[#01579B]"
-          onClick={handleLogin}
+        <form
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          action="POST"
+          className="w-full text-[15px] flex flex-col justify-evenly items-center text-black mt-[20px]"
         >
-          LOGIN
-        </button>
-      </form>
+          <div className="w-[80%] lg:w-[60%] flex flex-col justify-center items-center">
+            <input
+                id="email"
+                className={`
+                w-full h-[30px] rounded-[15px] p-[18px] my-[10px]
+                  ${errors.email && touched.email ? "input-error" : ""}
+                `}
+                type="email"
+                placeholder="Email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+            />
+              {errors.email && touched.email && (
+                <p className="error">{errors.email}</p>
+              )}
+          
+            <input
+                id="password"
+                className={`
+                w-full h-[30px] rounded-[15px] p-[18px] my-[10px]
+                  ${errors.password && touched.password ? "input-error" : ""}
+                `}
+                type="password"
+                placeholder="Password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+            />
+              {errors.password && touched.password && (
+                <p className="error">{errors.password}</p>
+              )}
+          </div>
 
-      <h3 className="text-center text-[15px] mt-[40px]">
-        Dont have an account?{" "}
-        <Link className="text-[#01579B] font-black" to="/SignUp">
-          Sign Up
-        </Link>
-      </h3>
+          <button
+            className="w-[40%] h-[40px] text-white font-black rounded-[15px] bg-[#01579B] mt-[30px]"
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </form>
+
+        <h3 className="text-center text-[15px] mt-[20px]">
+          Already have an account?{" "}
+          <Link className="text-[#01579B] font-black" to="/signup">
+            Signup
+          </Link>
+        </h3>
     </div>
   );
 };
