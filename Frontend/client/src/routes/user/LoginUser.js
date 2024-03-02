@@ -2,11 +2,9 @@ import { React } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { loginFormSchema } from "./schemas/loginFormSchema";
-import { useNavigate } from "react-router-dom";
 import { formLogin } from "../../controller/formLogin";
 
 const LoginUser = () => {
-  const navigate = useNavigate();
 
   const onSubmit = (value, actions) => {
     actions.resetForm(); //Reset form data
@@ -14,7 +12,6 @@ const LoginUser = () => {
       value.email,
       value.password
     );
-    navigate('/dashboard')
   };
 
   const { values, handleBlur, errors, touched, handleChange, handleSubmit } =
@@ -80,7 +77,7 @@ const LoginUser = () => {
             className="w-[40%] h-[40px] text-white font-black rounded-[15px] bg-[#01579B] mt-[30px]"
             type="submit"
           >
-            Sign Up
+            Login
           </button>
         </form>
 

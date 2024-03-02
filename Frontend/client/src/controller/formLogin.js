@@ -1,18 +1,17 @@
 import axios from "axios";
-import { encryptData } from "./encryptData";
 
 const formLogin = async (email, password) => {
-  const hashedPassword = encryptData(password); //Encrypt the password
-
-  await axios //Send data to Backend
-    .post("http://localhost:8000/login", {
-      email,
-      hashedPassword,
-    })
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => console.log(err.message));
+  try {
+    const response = await axios //Send data to Backend
+      .post("http://localhost:8000/login", {
+        email,
+        password,
+      });
+      localStorage.setItem("token", response.data.token);
+      window.location = "/dashboard"
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export { formLogin };

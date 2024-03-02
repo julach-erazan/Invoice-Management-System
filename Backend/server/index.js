@@ -1,7 +1,11 @@
-require('dotenv').config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+require('dotenv').config();
+
+const registerRoutes = require("./routes/register");
+const loginRoutes = require("./routes/login");
+const dashboardRoutes = require("./routes/dashboard");
 
 //database connection
 require("./db")
@@ -11,13 +15,14 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(cors());
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8000
 
-const mongoose = require("mongoose");
-const userRouter = require('./routes/UserRoutes');
+//routes
+app.use('/signup', registerRoutes);
+app.use('/login', loginRoutes);
+app.use('/dashboard', dashboardRoutes);
 
-app.use('/', userRouter);
 
 app.listen(port, () => {
-  console.log("Server Listnning...");
+  console.log("Server Listnning...", {port});
 });

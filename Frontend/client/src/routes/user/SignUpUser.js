@@ -2,12 +2,10 @@ import { React } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import TitleSection from "../home/homeComponents/TitleSection";
-import { formSchema } from "./schemas/formSchema";
-import { formSubmit } from "../../controller/formSubmit";
-import { useNavigate } from "react-router-dom";
+import { formSchema } from "./schemas/registerFormSchema";
+import { formSubmit } from "../../controller/formRegister";
 
 const SignUpUser = () => {
-  const navigate = useNavigate();
 
   const onSubmit = (value, actions) => {
     actions.resetForm(); //Reset form data
@@ -18,8 +16,6 @@ const SignUpUser = () => {
       value.email,
       value.password
     );
-    alert('Thank You. \nThe form was submitted successfully.')
-    navigate('/')
   };
 
   const { values, handleBlur, errors, touched, handleChange, handleSubmit } =
