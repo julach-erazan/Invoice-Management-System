@@ -1,11 +1,11 @@
 import { React } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import TitleSection from "../home/homeComponents/TitleSection";
+// import TitleSection from "../home/homeComponents/TitleSection";
 import { formSchema } from "./schemas/registerFormSchema";
 import { formSubmit } from "../../controller/formRegister";
 
-const SignUpUser = () => {
+const SignUpUser = ({ onToggleView }) => {
 
   const onSubmit = (value, actions) => {
     actions.resetForm(); //Reset form data
@@ -33,9 +33,8 @@ const SignUpUser = () => {
     });
 
   return (
-    <div className="w-screen min-w-[500px] h-screen min-h-[600px] flex flex-col lg:flex-row justify-evenly items-center bg-[#0F171A]">
-      <TitleSection />
-      <hr className="w-[80vw] min-w-[400px] h-[3px] lg:w-[3px] lg:min-w-[3px] lg:h-[80vh] bg-[#2E414D] border-none" />
+
+    <div>
 
       <div className="w-[45vw] min-w-[500px] h-[420px] lg:h-screen flex flex-col justify-center items-center text-white">
         <h1 className="text-center text-[30px] font-RubikRegular font-semibold">
@@ -184,9 +183,12 @@ const SignUpUser = () => {
 
         <h3 className="text-center text-[15px] mt-[20px]">
           Already have an account?{" "}
-          <Link className="text-[#01579B] font-black" to="/">
+          <button 
+            className="text-[#01579B] font-black"
+            onClick={() => onToggleView()}
+          >
             Login
-          </Link>
+          </button>
         </h3>
       </div>
     </div>

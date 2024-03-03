@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Dashboard = () => {
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("token");
     window.location = "/";
   } 

@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { loginFormSchema } from "./schemas/loginFormSchema";
 import { formLogin } from "../../controller/formLogin";
 
-const LoginUser = () => {
+const LoginUser = ({ onToggleView }) => {
 
   const onSubmit = (value, actions) => {
     actions.resetForm(); //Reset form data
@@ -83,9 +83,12 @@ const LoginUser = () => {
 
         <h3 className="text-center text-[15px] mt-[20px]">
           Already have an account?{" "}
-          <Link className="text-[#01579B] font-black" to="/signup">
+          <button 
+            className="text-[#01579B] font-black"
+            onClick={() => onToggleView()}
+          >
             Signup
-          </Link>
+          </button>
         </h3>
     </div>
   );

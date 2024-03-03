@@ -8,9 +8,14 @@ const formLogin = async (email, password) => {
         password,
       });
       localStorage.setItem("token", response.data.token);
-      window.location = "/dashboard"
+      if(response.data.token != null){
+        window.location = "/dashboard";
+      }
+      // window.location = "/dashboard"
+
+      console.log(response.data.token);
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
   }
 };
 

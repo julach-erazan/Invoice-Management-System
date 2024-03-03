@@ -20,7 +20,6 @@ const port = process.env.PORT || 8000
 //routes
 app.use('/signup', registerRoutes);
 app.use('/login', loginRoutes);
-app.use('/dashboard', dashboardRoutes);
 
 
 app.listen(port, () => {

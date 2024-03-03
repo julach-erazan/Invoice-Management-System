@@ -22,4 +22,4 @@ const requireAuth = (req, res, next) => {
   }
 };
 
-module.export = { requireAuth };
+module.exports = { requireAuth };
