@@ -7,15 +7,12 @@ const formLogin = async (email, password) => {
         email,
         password,
       });
-      localStorage.setItem("token", response.data.token);
-      if(response.data.token != null){
-        window.location = "/dashboard";
-      }
-      // window.location = "/dashboard"
-
-      console.log(response.data.token);
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("email", response.data.email);
+    window.location = "/dashboard";
+    // console.log(response.data);
   } catch (error) {
-    console.log(error.response.data.message);
+    alert(error.response?.data.message);
   }
 };
 

@@ -17,9 +17,12 @@ const formSubmit = async (
         password,
       });
 
-    console.log(response.data);
+    if(response.data.message == 'User registered successfully'){
+      alert(response.data.message);
+      window.location = "/"
+    }
   } catch (error) {
-    console.log(error.response.data.message);
+    alert(error.response?.data.message);
   }
 };
 
