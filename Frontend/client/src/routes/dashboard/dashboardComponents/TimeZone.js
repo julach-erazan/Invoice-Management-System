@@ -14,13 +14,10 @@ const TimeZone = () => {
 
   if(currentTime.hours > 12){
     currentTime.hours = currentTime.hours - 12;
-  }else{
-    currentTime.hours = currentTime.hours;
   }
-
   return (
-    <div className="w-full h-[15px] text-[12px] flex justify-left items-center bg-[#000] font-semibold text-[#fff]">
-        <h1>{currentTime.hours == 12 ? "" : "0" + currentTime.hours}</h1>
+    <div className="w-full h-[15px] text-[12px] flex justify-left items-center font-semibold">
+        <h1>{currentTime.hours < 10 ? "0" + currentTime.hours : currentTime.hours}</h1>
         <h1>&nbsp;:&nbsp;</h1>
         <h1>{currentTime.minuite < 10 ? "0" + currentTime.minuite : currentTime.minuite}</h1>
         <h1>&nbsp;{currentTime.hours < 12 ? "AM" : "PM"}</h1>

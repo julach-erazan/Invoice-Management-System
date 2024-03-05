@@ -4,7 +4,7 @@ const setTime = () => {
   let time = {
     hours: date.getHours(),
     minuite: date.getMinutes(),
-    day: date.getDay(),
+    day: date.getDate(),
     month: date.toLocaleString('default', { month: 'long' }),
     year: date.getFullYear(),
   };

@@ -3,36 +3,36 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Navbar from './dashboardComponents/Navbar';
+import Profile from './dashboardComponents/Profile';
 
 const Dashboard = () => {
 
   const [email, setEmail] = useState();
-  const [name, setName] = useState();
+  const [firstName, setFirstName] = useState("FName");
+  const [lastName, setLastName] = useState("LName");
+  const [phoneNumber, setPhoneName] = useState("Phone");
 
   useEffect(() => {
     setEmail(localStorage.getItem("email"))
   }, [])
 
-  const handleLogout = async () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    window.location = "/";
-  }
-
   axios.post("http://localhost:8000/dashboard",{
     email
   }).then((res) => {
-    setName(res.data.name);
+    setFirstName(res.data.firstName);
+    setLastName(res.data.lastName);
+    setPhoneName(res.data.phoneNumber);
   })
   .catch(err => {
     return;
   });
 
+  const dataObj = {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}
+
   return (
-    <div className='p-[10px]'>
-      <Navbar/>
-      <h1>Hello {name} Welcome to the Dashboard</h1>
-      <button onClick={ handleLogout }>Logout</button>
+    <div className='w-screen h-screen p-[10px] bg-[#141E22] text-[#fff]'>
+      <Navbar {...dataObj}/>
+      <Profile {...dataObj}/>
     </div>
   )
 }
