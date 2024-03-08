@@ -17,7 +17,7 @@ const formSubmit = async (
         password,
       });
 
-    if(response.data.message == 'User registered successfully'){
+    if(response.status === 201){
       alert(response.data.message);
       window.location = "/"
     }

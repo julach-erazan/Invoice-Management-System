@@ -1,7 +1,22 @@
 import React from "react";
 import { FiLogOut } from "react-icons/fi";
+import { MdEmail } from "react-icons/md";
+import { MdPhoneAndroid } from "react-icons/md";
 
 const Profile = ({ firstName, lastName, email, phoneNumber }) => {
+  let Links = [
+    {
+      name: "Email Address",
+      img: <MdEmail />,
+      discription: email,
+    },
+    {
+      name: "Phone Number",
+      img: <MdPhoneAndroid />,
+      discription: phoneNumber,
+    },
+  ];
+
   const handleLogout = async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
@@ -17,54 +32,48 @@ const Profile = ({ firstName, lastName, email, phoneNumber }) => {
         />
       </div>
 
-      <div className="name w-full text-[25px] text-[#E4E4E4] font-semibold pt-[5px]">
+      <div className="name w-full text-[25px] text-[#E4E4E4] font-semibold pt-[5px] flex justify-center">
         <h1>
           {firstName}&nbsp;&nbsp;{lastName}
         </h1>
       </div>
 
-      <div className="email w-full border-b-[2px] border-[#283943] pb-[5px] my-[10px]"> 
-        <table>
-          <tr>
-            <td rowSpan={2}>
-              <div className="w-[32px] h-[32px] rounded-[8px] bg-[#283943] mr-[15px]"></div>
-            </td>
-            <td>
-              <h1 className="text-[15px] text-[#E4E4E4]">Email Address</h1>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h2 className="text-[13px]">{email}</h2>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div className="phone w-full border-b-[2px] border-[#283943] pb-[5px] my-[10px]">
-        <table>
-          <tr>
-            <td rowSpan={2}>
-              <div className="w-[32px] h-[32px] rounded-[8px] bg-[#283943] mr-[15px]"></div>
-            </td>
-            <td>
-              <h1 className="text-[15px] text-[#E4E4E4]">Phone Number</h1>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h2 className="text-[13px]">{"0" + phoneNumber}</h2>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <ul>
+        {Links.map((link) => (
+          <li key={link.name}>
+            <button className="w-full border-b-[2px] border-[#283943] text-left pb-[5px] my-[10px]">
+              <table>
+                <tbody>
+                  <tr>
+                    <td rowSpan={2}>
+                      <div className="w-[32px] h-[32px] rounded-[12px] bg-[#283943] mr-[15px] flex justify-center items-center text-[18px]">
+                        {link.img}
+                      </div>
+                    </td>
+                    <td>
+                      <h1 className="text-[15px] text-[#E4E4E4]">
+                        {link.name}
+                      </h1>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h2 className="text-[13px]">{link.discription}</h2>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </button>
+          </li>
+        ))}
+      </ul>
 
       <div className="logout w-full  mt-[25px] mb-[10px] flex justify-center items-center">
-        <button 
-        className="w-[120px] h-[36px] text-black font-semibold rounded-[13px] bg-[#39DB7D] flex items-center justify-evenly"
-        onClick={handleLogout}
+        <button
+          className="w-[120px] h-[36px] text-black font-semibold rounded-[13px] bg-[#39DB7D] flex items-center justify-evenly"
+          onClick={handleLogout}
         >
-            <FiLogOut /> Logout
+          <FiLogOut /> Logout
         </button>
       </div>
     </div>

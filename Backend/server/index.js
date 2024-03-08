@@ -6,6 +6,7 @@ require('dotenv').config();
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
+const shopRoutes = require("./routes/shopRegister");
 
 //database connection
 require("./db")
@@ -21,6 +22,7 @@ const port = process.env.PORT || 8000
 app.use('/signup', registerRoutes);
 app.use('/login', loginRoutes); 
 app.use('/dashboard', dashboardRoutes);
+app.use('/shopregister', shopRoutes);
 
 
 app.listen(port, () => {
