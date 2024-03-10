@@ -1,6 +1,6 @@
 import { React } from "react";
 import { useFormik } from "formik";
-import { shopRegisterSchema } from "../schemas/shopRegisterSchema";
+import { shopRegisterSchema } from "../../../schemas/shopRegisterSchema";
 import { shopRegSubmit } from "../../../controller/formShopRegister";
 import { useState } from "react";
 
@@ -37,7 +37,7 @@ const ShopRegister = () => {
     });
 
   return (
-    <div className="w-[300px] md:w-[500px] bg-[#1A262D] rounded-[15px] flex flex-col items-center p-[10px] px-[20px] mt-[20px]">
+    <div className="w-[300px] md:w-[500px] bg-[#1A262D] rounded-[15px] flex flex-col items-center p-[10px] px-[20px]">
       <h2 className="text-[14px] text-[#AEB0AF]">Add Shop Details</h2>
       <h1 className="text-[20px] text-[#E4E4E4] font-RobotoRegular">
         General Information

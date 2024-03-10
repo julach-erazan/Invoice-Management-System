@@ -1,3 +1,7 @@
+body{
+  background-color: #141E22;
+}
+
 input,textarea {
     background-color: #ffffff11;
     border: 2px solid #ffffff28;

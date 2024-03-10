@@ -1,19 +1,21 @@
 import React from "react";
-import { MdPhoneAndroid } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
-const Setting = () => {
+const Setting = ({onViewProfileSet, onViewShopSet}) => {
   let Links = [
     {
       name: "Profile",
-      img: <MdPhoneAndroid />,
+      img: <FaUser className="text-[15px]" />,
       discription: "Update your profile details",
+      method: onViewProfileSet,
     },
     {
       name: "Shop",
-      img: <MdPhoneAndroid />,
+      img: <FaShoppingCart className="text-[15px]"/>,
       discription: "Update your shop details",
+      method: onViewShopSet,
     },
-    { name: "Mode", img: <MdPhoneAndroid />, discription: "Change app mode" },
   ];
   return (
     <div className="w-[250px] rounded-[15px] text-[#AEB0AF] bg-[#1A262D] p-[10px] absolute z-10 top-[90px] right-[10px]">
@@ -22,6 +24,7 @@ const Setting = () => {
           <li key={link.name}>
             <button 
                 className="w-full border-b-[2px] border-[#283943] text-left pb-[5px] my-[10px]"
+                onClick={() => link.method()}
             >
               <table>
                 <tbody>

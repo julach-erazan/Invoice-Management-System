@@ -17,7 +17,8 @@ const Dashboard = () => {
 
   const [viewProf, setViewProf] = useState(false);
   const [viewSet, setViewSet] = useState(false);
-  const [viewProfileSet, setViewProfileSet] = useState(false);
+  const [_viewProfileSet, setViewProfileSet] = useState(false);
+  const [_viewShopSet, setViewShopSet] = useState(false);
 
   useEffect(() => {
     setEmail(localStorage.getItem("email"))
@@ -50,16 +51,29 @@ const Dashboard = () => {
     }
   }
 
+  //View Profile Update Section
+  const viewProfileSet = () =>{
+    setViewProfileSet(!_viewProfileSet);
+    setViewSet(false);
+    setViewShopSet(false);
+  }
+
+  //View Shop Information Update Section
+  const viewShopSet = () =>{
+    setViewShopSet(!_viewShopSet);
+    setViewSet(false);
+    setViewProfileSet(false);
+  }
+
   const dataObj = {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}
 
   return (
-    <div className='w-screen h-screen p-[10px] bg-[#141E22] text-[#fff] font-RubikRegular'>
+    <div className='w-screen min-w-[320px] h-screen p-[10px] text-[#fff] font-RubikRegular'>
       <Navbar {...dataObj} onViewProfile={viewProfile} onViewSetting={viewSetting}/>
       {viewProf ? <Profile {...dataObj}/> : "" }
-      {viewSet ? <Setting/> : ""}
-      {viewProfileSet ? <ProfileSetting /> : ""}
-      <ShopSetting/>
-      {/* <ProfileSetting/> */}
+      {viewSet ? <Setting onViewProfileSet = {viewProfileSet} onViewShopSet = {viewShopSet}/> : ""}
+      {_viewProfileSet ? <ProfileSetting /> : ""}
+      {_viewShopSet ? <ShopSetting/> : ""}
     </div>
   )
 }

@@ -15,9 +15,7 @@ function App() {
 
   return (
     <div className="main font-RobotoRegular">
-      <BrowserRouter>
-        {accessToken?<Dashboard/>:<Home/>}
-      </BrowserRouter>
+      <BrowserRouter>{accessToken ? <Dashboard /> : <Home />}</BrowserRouter>
     </div>
   );
 }

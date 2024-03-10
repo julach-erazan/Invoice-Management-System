@@ -1,6 +1,6 @@
 import { React } from "react";
 import { useFormik } from "formik";
-import { formSchema } from "./schemas/registerFormSchema";
+import { formSchema } from "../../schemas/registerFormSchema";
 import { formSubmit } from "../../controller/formRegister";
 
 const SignUpUser = ({ onToggleView }) => {
@@ -12,7 +12,7 @@ const SignUpUser = ({ onToggleView }) => {
       value.lastName,
       value.phoneNumber,
       value.email,
-      value.password
+      value.password,
     );
   };
 

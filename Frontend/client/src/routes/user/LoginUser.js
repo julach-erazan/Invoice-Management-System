@@ -1,6 +1,6 @@
 import { React } from "react";
 import { useFormik } from "formik";
-import { loginFormSchema } from "./schemas/loginFormSchema";
+import { loginFormSchema } from "../../schemas/loginFormSchema";
 import { formLogin } from "../../controller/formLogin";
 
 const LoginUser = ({ onToggleView }) => {
