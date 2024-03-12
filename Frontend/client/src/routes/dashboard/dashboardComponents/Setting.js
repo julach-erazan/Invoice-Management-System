@@ -18,7 +18,7 @@ const Setting = ({onViewProfileSet, onViewShopSet}) => {
     },
   ];
   return (
-    <div className="w-[250px] rounded-[15px] text-[#AEB0AF] bg-[#1A262D] p-[10px] absolute z-10 top-[90px] right-[10px]">
+    <div className="w-[250px] rounded-[15px] text-[#AEB0AF] bg-[#1A262D] p-[10px] absolute z-10 top-[90px] right-[10px] drop-shadow">
       <ul>
         {Links.map((link) => (
           <li key={link.name}>

@@ -10,7 +10,6 @@ const formLogin = async (email, password) => {
     localStorage.setItem("token", response.data.token);
     localStorage.setItem("email", response.data.email);
     window.location = "/dashboard";
-    // console.log(response.data);
   } catch (error) {
     alert(error.response?.data.message);
   }

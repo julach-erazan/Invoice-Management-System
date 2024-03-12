@@ -1,25 +1,28 @@
-import { React } from "react";
-import { useFormik } from "formik";
+import { React, useState, useRef } from "react";
 import { shopRegisterSchema } from "../../../schemas/shopRegisterSchema";
+import { useFormik } from "formik";
 import { shopRegSubmit } from "../../../controller/formShopRegister";
-import { useState } from "react";
 
 const ShopRegister = () => {
-  const [logoPath, setoLgoPath] = useState();
-
-  const path = new FormData();
-  path.append('logoPath', logoPath)
+  const [image, setImage] = useState(null);
+  const inputImage = useRef(null);
 
   const onSubmit = (value, actions) => {
     actions.resetForm(); //Reset form data
+    inputImage.current.value = ""; //Clear image input field
+
     shopRegSubmit(
       value.shopName,
-      path,
+      image,
       value.shopRegistationNumber,
       value.email,
       value.phoneNumber,
-      value.address
-    );
+      value.address,
+      );
+  };
+
+  const handleUpload = (e) => {
+    setImage(e.target.files[0]);
   };
 
   const { values, handleBlur, errors, touched, handleChange, handleSubmit } =
@@ -37,7 +40,7 @@ const ShopRegister = () => {
     });
 
   return (
-    <div className="w-[300px] md:w-[500px] bg-[#1A262D] rounded-[15px] flex flex-col items-center p-[10px] px-[20px]">
+    <div className="h-[440px] overflow-y-scroll flex flex-col items-center p-[10px]">
       <h2 className="text-[14px] text-[#AEB0AF]">Add Shop Details</h2>
       <h1 className="text-[20px] text-[#E4E4E4] font-RobotoRegular">
         General Information
@@ -50,13 +53,14 @@ const ShopRegister = () => {
         action="POST"
       >
         <label htmlFor="shopName">
-          <h1 className="text-[14px]">Shop name</h1>
+          <h1 className="text-[14px]">Shop Name</h1>
         </label>
         <input
+          className={`
+          w-full h-[30px] rounded-[8px] p-[10px] my-[10px]
+            ${errors.shopName && touched.shopName ? "input-error" : ""}
+          `}
           id="shopName"
-          className={`w-full min-w-[260px] h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px] ${
-            errors.shopName && touched.shopName ? "input-error" : ""
-          }`}
           type="text"
           placeholder="Example Stores"
           value={values.shopName}
@@ -71,31 +75,36 @@ const ShopRegister = () => {
           <h1 className="text-[14px]">Logo</h1>
         </label>
         <input
-          type="file"
           id="logoPath"
-          className={`w-full min-w-[260px] h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px] ${
-            errors.logoPath && touched.logoPath ? "input-error" : ""
+          type="file"
+          className={`w-full h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px]
+          ${
+            errors.logoPath && touched.logoPath
+              ? "input-error"
+              : ""
           }`}
           accept="image/*"
-          onChange={e => setoLgoPath(e.target.files[0])}
-          onBlur={handleBlur}
+          onChange={handleUpload}
+          ref={inputImage}
         />
         {errors.logoPath && touched.logoPath && (
           <p className="error">{errors.logoPath}</p>
         )}
 
         <label htmlFor="shopRegistationNumber">
-          <h1 className="text-[14px]">Registation number</h1>
+          <h1 className="text-[14px]">Registation Number</h1>
         </label>
         <input
+          className={`
+          w-full h-[30px] rounded-[8px] p-[10px] my-[10px]
+            ${
+              errors.shopRegistationNumber && touched.shopRegistationNumber
+                ? "input-error"
+                : ""
+            }
+          `}
           id="shopRegistationNumber"
-          className={`w-full min-w-[260px] h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px] ${
-            errors.shopRegistationNumber && touched.shopRegistationNumber
-              ? "input-error"
-              : ""
-          }`}
           type="text"
-          placeholder="10/example/001"
           value={values.shopRegistationNumber}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -108,12 +117,13 @@ const ShopRegister = () => {
           <h1 className="text-[14px]">Email</h1>
         </label>
         <input
+          className={`
+          w-full h-[30px] rounded-[8px] p-[10px] my-[10px]
+            ${errors.email && touched.email ? "input-error" : ""}
+          `}
           id="email"
-          className={`w-full min-w-[260px] h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px] ${
-            errors.email && touched.email ? "input-error" : ""
-          }`}
           type="email"
-          placeholder="example@mail.com"
+          placeholder="example@email.com"
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -123,15 +133,16 @@ const ShopRegister = () => {
         )}
 
         <label htmlFor="phoneNumber">
-          <h1 className="text-[14px]">Phone number</h1>
+          <h1 className="text-[14px]">Phone Number</h1>
         </label>
         <input
+          className={`
+          w-full h-[30px] rounded-[8px] p-[10px] my-[10px]
+            ${errors.phoneNumber && touched.phoneNumber ? "input-error" : ""}
+          `}
           id="phoneNumber"
-          className={`w-full min-w-[260px] h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px] ${
-            errors.phoneNumber && touched.phoneNumber ? "input-error" : ""
-          }`}
           type="text"
-          placeholder="999-999-9999"
+          placeholder="999 999 9999"
           value={values.phoneNumber}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -144,12 +155,12 @@ const ShopRegister = () => {
           <h1 className="text-[14px]">Address</h1>
         </label>
         <textarea
+          className={`
+          w-full h-[70px] rounded-[8px] p-[10px] my-[10px]
+            ${errors.address && touched.address ? "input-error" : ""}
+          `}
           id="address"
-          className={`w-full min-w-[260px] h-[60px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px] ${
-            errors.address && touched.address ? "input-error" : ""
-          }`}
           type="text"
-          placeholder=""
           value={values.address}
           onChange={handleChange}
           onBlur={handleBlur}

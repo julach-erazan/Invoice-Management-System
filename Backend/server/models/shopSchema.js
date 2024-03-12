@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const shopSchema = new mongoose.Schema({
+  user: { type: String, require: true },
   shopName: { type: String, require: true },
   logoPath: { type: String },
   shopRegistationNumber: { type: String },

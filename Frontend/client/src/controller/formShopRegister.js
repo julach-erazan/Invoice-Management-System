@@ -2,26 +2,27 @@ import axios from "axios";
 
 const shopRegSubmit = async (
   shopName,
-  path,
+  image,
   shopRegistationNumber,
   email,
   phoneNumber,
   address
 ) => {
   try {
+
+    const formData = new FormData();
+    formData.append("user", localStorage.getItem("email"));
+    formData.append("shopName", shopName);
+    formData.append("logoPath", image);
+    formData.append("shopRegistationNumber", shopRegistationNumber);
+    formData.append("email", email);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("address", address);
+
     const response = await axios //Send data to Backend
-      .post("http://localhost:8000/shopregister", {
-        shopName,
-        path,
-        shopRegistationNumber,
-        email,
-        phoneNumber,
-        address,
-      });
+      .post("http://localhost:8000/shopregister", formData);
 
-      console.log(path);
-
-    if (response.status == 201) {
+    if (response.status === 201) {
       alert(response.data.message);
     }
   } catch (error) {

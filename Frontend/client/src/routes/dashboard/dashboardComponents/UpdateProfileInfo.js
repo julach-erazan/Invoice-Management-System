@@ -12,7 +12,7 @@ const UpdateProfileInfo = () => {
 
       <div className="flex flex-col mt-[30px]">
         <label htmlFor="phoneNumber">
-          <h1 className="text-[14px]">Firstname</h1>
+          <h1 className="text-[14px]">First Name</h1>
         </label>
         <input
           id="phoneNumber"
@@ -21,7 +21,7 @@ const UpdateProfileInfo = () => {
         />
 
         <label htmlFor="phoneNumber">
-          <h1 className="text-[14px]">Lastname</h1>
+          <h1 className="text-[14px]">Last Name</h1>
         </label>
         <input
           id="phoneNumber"
@@ -39,7 +39,7 @@ const UpdateProfileInfo = () => {
         />
 
         <label htmlFor="phoneNumber">
-          <h1 className="text-[14px]">Phone number</h1>
+          <h1 className="text-[14px]">Phone Number</h1>
         </label>
         <input
           id="phoneNumber"

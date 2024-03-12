@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { FaFolderPlus } from "react-icons/fa6";
 
 const UpdateProfilePic = () => {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState("/Images/blankProfile.png");
   function handleChange(e) {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
@@ -26,7 +26,7 @@ const UpdateProfilePic = () => {
             <FaFolderPlus /> Change
           </label>
 
-          <input id="profilePic" type="file" onChange={handleChange} hidden />
+          <input id="profilePic" type="file" onChange={handleChange} accept="image/*" hidden/>
 
           <button
             className="w-[120px] h-[36px] text-white font-semibold rounded-[13px] bg-[#01579B] mt-[10px] ml-[10px]"

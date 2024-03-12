@@ -1,9 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import { MdPhoneAndroid } from "react-icons/md";
 
 const Profile = ({ firstName, lastName, email, phoneNumber }) => {
+  const [profileImg, setProfileImage] = useState("/Images/blankProfile.png");
+
   let Links = [
     {
       name: "Email Address",
@@ -13,7 +16,7 @@ const Profile = ({ firstName, lastName, email, phoneNumber }) => {
     {
       name: "Phone Number",
       img: <MdPhoneAndroid />,
-      discription: phoneNumber,
+      discription: "0" + phoneNumber,
     },
   ];
 
@@ -23,11 +26,11 @@ const Profile = ({ firstName, lastName, email, phoneNumber }) => {
     window.location = "/";
   };
   return (
-    <div className="w-[250px] rounded-[15px] text-[#AEB0AF] bg-[#1A262D] p-[10px] absolute z-10 top-[90px] right-[10px]">
+    <div className="w-[250px] rounded-[15px] text-[#AEB0AF] bg-[#1A262D] p-[10px] absolute z-10 top-[90px] right-[10px] drop-shadow">
       <div className="profile photo w-full h-[100px] flex justify-center items-center">
         <img
-          className="w-[80px] h-[80px] bg-black rounded-[50%]"
-          src=""
+          className="w-[80px] h-[80px] rounded-[50%]"
+          src={profileImg}
           alt="Profile"
         />
       </div>
@@ -41,7 +44,7 @@ const Profile = ({ firstName, lastName, email, phoneNumber }) => {
       <ul>
         {Links.map((link) => (
           <li key={link.name}>
-            <button className="w-full border-b-[2px] border-[#283943] text-left pb-[5px] my-[10px]">
+            <div className="w-full border-b-[2px] border-[#283943] text-left pb-[5px] my-[10px]">
               <table>
                 <tbody>
                   <tr>
@@ -63,7 +66,7 @@ const Profile = ({ firstName, lastName, email, phoneNumber }) => {
                   </tr>
                 </tbody>
               </table>
-            </button>
+            </div>
           </li>
         ))}
       </ul>
