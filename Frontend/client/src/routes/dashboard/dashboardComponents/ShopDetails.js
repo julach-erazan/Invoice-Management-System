@@ -1,9 +1,10 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const ShopDetails = () => {
-  const email = localStorage.getItem("email");
+  const id = localStorage.getItem("id");
   const [shopName, setShopName] = useState("[Your Shop Name]");
   const [logoPath, setLogoPath] = useState("Images/blanckImage.png");
   const [shopRegistationNumber, setShopRegistationNumber] = useState(
@@ -17,7 +18,7 @@ const ShopDetails = () => {
     try {
       await axios
         .post("http://localhost:8000/getShopData", {
-          email,
+          id,
         })
         .then((res) => {
           setShopName(res.data.shopName);
@@ -31,7 +32,10 @@ const ShopDetails = () => {
       return;
     }
   };
-  getShopData();
+
+  useEffect(() => {
+    getShopData();
+  });
 
   return (
     <div className="h-[90%] flex flex-col items-center p-[10px] overflow-y-scroll">
@@ -51,7 +55,9 @@ const ShopDetails = () => {
       </div>
 
       <div className="w-[90%] text-[#AEB0AF] border-b-[2px] border-[#283943] text-left pb-[5px] my-[10px]">
-        <h1 className="text-[15px] text-[#E4E4E4] pb-[3px]">Shop Registation Number</h1>
+        <h1 className="text-[15px] text-[#E4E4E4] pb-[3px]">
+          Shop Registation Number
+        </h1>
         <h2 className="text-[13px]">{shopRegistationNumber}</h2>
       </div>
 
@@ -61,7 +67,9 @@ const ShopDetails = () => {
       </div>
 
       <div className="w-[90%] text-[#AEB0AF] border-b-[2px] border-[#283943] text-left pb-[5px] my-[10px]">
-        <h1 className="text-[15px] text-[#E4E4E4] pb-[3px]">Shop Phone Number</h1>
+        <h1 className="text-[15px] text-[#E4E4E4] pb-[3px]">
+          Shop Phone Number
+        </h1>
         <h2 className="text-[13px]">{phoneNumber}</h2>
       </div>
 

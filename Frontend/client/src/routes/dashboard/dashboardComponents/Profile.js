@@ -1,11 +1,30 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import { MdPhoneAndroid } from "react-icons/md";
 
-const Profile = ({ firstName, lastName, email, phoneNumber }) => {
+const Profile = ({ id, firstName, lastName, email, phoneNumber }) => {
   const [profileImg, setProfileImage] = useState("/Images/blankProfile.png");
+
+  const getProfileImage = async () => {
+    try {
+      await axios.post("http://localhost:8000/getprofileimage", {
+        id,
+      })
+      .then(res =>{
+        setProfileImage("http://localhost:8000/Images/" + res.data);
+      })
+    } catch (error) {
+      return;
+    }
+  };
+
+  useEffect(() => {
+    getProfileImage();
+  });
 
   let Links = [
     {
@@ -23,6 +42,7 @@ const Profile = ({ firstName, lastName, email, phoneNumber }) => {
   const handleLogout = async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
+    localStorage.removeItem("id");
     window.location = "/";
   };
   return (

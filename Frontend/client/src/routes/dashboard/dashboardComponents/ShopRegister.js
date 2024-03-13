@@ -23,9 +23,10 @@ const ShopRegister = () => {
 
   const handleUpload = (e) => {
     setImage(e.target.files[0]);
+    setFieldValue('logoPath', e.target.files[0]);
   };
 
-  const { values, handleBlur, errors, touched, handleChange, handleSubmit } =
+  const { values, handleBlur, errors, touched, setFieldValue, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
         shopName: "",
@@ -76,6 +77,7 @@ const ShopRegister = () => {
         </label>
         <input
           id="logoPath"
+          name='logoPath'
           type="file"
           className={`w-full h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px]
           ${

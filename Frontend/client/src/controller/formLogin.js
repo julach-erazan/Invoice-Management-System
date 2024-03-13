@@ -9,6 +9,7 @@ const formLogin = async (email, password) => {
       });
     localStorage.setItem("token", response.data.token);
     localStorage.setItem("email", response.data.email);
+    localStorage.setItem("id", response.data.id);
     window.location = "/dashboard";
   } catch (error) {
     alert(error.response?.data.message);

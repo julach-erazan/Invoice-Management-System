@@ -29,3 +29,7 @@ input,textarea {
     padding-left: 10px;
     width: 100%;
   }
+
+  .active{
+    border-color: #fc8181;
+  }

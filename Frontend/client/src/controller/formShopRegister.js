@@ -11,7 +11,7 @@ const shopRegSubmit = async (
   try {
 
     const formData = new FormData();
-    formData.append("user", localStorage.getItem("email"));
+    formData.append("userId", localStorage.getItem("id"));
     formData.append("shopName", shopName);
     formData.append("logoPath", image);
     formData.append("shopRegistationNumber", shopRegistationNumber);

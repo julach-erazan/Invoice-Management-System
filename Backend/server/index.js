@@ -8,6 +8,8 @@ const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
 const shopRoutes = require("./routes/shopRegister");
 const getShopRoutes = require("./routes/getShopData");
+const updateProfilePictureRoutes = require("./routes/updateProfilePic");
+const getProfileImageRoutes = require("./routes/getProfileImage");
 
 //database connection
 require("./db")
@@ -26,6 +28,8 @@ app.use('/login', loginRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/shopregister', shopRoutes);
 app.use('/getShopData', getShopRoutes);
+app.use('/updateprofilepicture', updateProfilePictureRoutes);
+app.use('/getprofileimage', getProfileImageRoutes);
 
 
 app.listen(port, () => {

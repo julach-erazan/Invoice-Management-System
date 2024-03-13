@@ -1,8 +1,9 @@
 import React from "react";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { FaShoppingCart } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 
-const ShopNavbar = ({onViewDetails, onViewUpdate}) => {
+const ShopNavbar = ({onViewDetails, onViewUpdate, onClose}) => {
   let Links = [
     {
       name: "Profile Information",
@@ -13,6 +14,11 @@ const ShopNavbar = ({onViewDetails, onViewUpdate}) => {
       name: "Profile Picture",
       img: <GrDocumentUpdate className="text-[15px]" />,
       method: onViewUpdate,
+    },
+    {
+      name: "Close",
+      img: <IoClose className="text-[18px]" />,
+      method: onClose,
     },
   ];
   return (

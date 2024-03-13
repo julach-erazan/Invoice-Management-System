@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { ShopModel } = require("../models/shopSchema");
+const { UserModel } = require("../models/userSchema");
 const multer = require("multer");
 const path = require("path");
 
@@ -20,13 +20,12 @@ const upload = multer({
   storage: storage,
 });
 
-router.post("/", upload.single("logoPath"), async (req, res) => {
+router.post("/", upload.single("profileImagePath"), async (req, res) => {
   try {
-    const count = ShopModel.countDocuments();
 
-    ShopModel.create({ ...req.body, logoPath: req.file.filename });
-    res.status(201).json({ message: "Successfully" });
-    
+    await UserModel.updateOne({_id: req.body.id}, { $set: { profileImagePath: req.file.filename }});
+    res.status(201).json({ message: "Update Successfully" });
+
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
     return;

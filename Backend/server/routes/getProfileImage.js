@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const { ShopModel } = require("../models/shopSchema");
+const { UserModel } = require("../models/userSchema");
 
 router.post("/", async (req, res) => {
   try {
 
-    const data = await ShopModel.findOne({userId: req.body.id})
-    res.json(data);
+    const data = await UserModel.findOne({_id: req.body.id})
+    res.json(data.profileImagePath);
 
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });

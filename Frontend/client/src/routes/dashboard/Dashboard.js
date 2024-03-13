@@ -10,6 +10,7 @@ import ShopSetting from './dashboardComponents/ShopSetting';
 
 const Dashboard = () => {
 
+  const [id, setId] = useState()
   const [email, setEmail] = useState();
   const [firstName, setFirstName] = useState("FName");
   const [lastName, setLastName] = useState("LName");
@@ -21,11 +22,12 @@ const Dashboard = () => {
   const [_viewShopSet, setViewShopSet] = useState(false);
 
   useEffect(() => {
-    setEmail(localStorage.getItem("email"))
+    setEmail(localStorage.getItem("email"));
+    setId(localStorage.getItem("id"))
   }, [])
 
   axios.post("http://localhost:8000/dashboard",{
-    email
+    id,
   }).then((res) => {
     setFirstName(res.data.firstName);
     setLastName(res.data.lastName);
@@ -65,15 +67,21 @@ const Dashboard = () => {
     setViewProfileSet(false);
   }
 
-  const dataObj = {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}
+  const close = () =>{
+    setViewSet(false);
+    setViewProfileSet(false);
+    setViewShopSet(false);
+  }
+
+  const dataObj = {id: id, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}
 
   return (
     <div className='w-screen min-w-[320px] h-screen p-[10px] text-[#fff] font-RubikRegular'>
       <Navbar {...dataObj} onViewProfile={viewProfile} onViewSetting={viewSetting}/>
       {viewProf ? <Profile {...dataObj}/> : "" }
       {viewSet ? <Setting onViewProfileSet = {viewProfileSet} onViewShopSet = {viewShopSet}/> : ""}
-      {_viewProfileSet ? <ProfileSetting /> : ""}
-      {_viewShopSet ? <ShopSetting/> : ""}
+      {_viewProfileSet ? <ProfileSetting onClose = {close}/> : ""}
+      {_viewShopSet ? <ShopSetting onClose = {close}/> : ""}
     </div>
   )
 }

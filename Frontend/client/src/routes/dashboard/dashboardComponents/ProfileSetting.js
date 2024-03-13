@@ -5,7 +5,7 @@ import UpdateProfilePic from "./UpdateProfilePic";
 import UpdateProfileInfo from "./UpdateProfileInfo";
 import UpdatePassword from "./UpdatePassword";
 
-const ProfileSetting = () => {
+const ProfileSetting = ({onClose}) => {
   const [_viewUpdateProfilePic, setViewUpdateProfilePic] = useState(true);
   const [_viewUpdateProfileInfo, setViewUpdateProfileInfo] = useState(false);
   const [_viewUpdatePassword, setViewUpdatePassword] = useState(false);
@@ -35,6 +35,7 @@ const ProfileSetting = () => {
           onViewUpdateProfilePic = {viewUpdateProfilePic} 
           onViewUpdateProfileInfo = {viewUpdateProfileInfo}
           onViewUpdatePassword = {viewUpdatePassword}
+          onClose ={onClose}
         />
         {_viewUpdateProfilePic ? <UpdateProfilePic/> : ""}
         {_viewUpdateProfileInfo ? <UpdateProfileInfo/> : ""}

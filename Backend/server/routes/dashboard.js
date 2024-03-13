@@ -3,7 +3,7 @@ const { UserModel } = require("../models/userSchema");
 
 router.post("/", async (req, res) => {
   try {
-    const user = await UserModel.findOne({ email: req.body.email });
+    const user = await UserModel.findOne({ _id: req.body.id });
     res.json({
       firstName: user.firstName,
       lastName: user.lastName,

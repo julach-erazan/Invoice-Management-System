@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     // Generate a JWT token
     const token = jwt.sign({ id: user._id }, process.env.JWTPRIVATEKEY);
 
-    res.json({ token, email: user.email });
+    res.json({ token, email: user.email, id: user._id});
   } catch (error) {
     res.status(500).json({ message: "Internal Sever Error" });
     return;
