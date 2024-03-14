@@ -2,17 +2,23 @@ import axios from "axios";
 
 const formLogin = async (email, password) => {
   try {
-    const response = await axios //Send data to Backend
+    const {data: res} = await axios //Send data to Backend
       .post("http://localhost:8000/login", {
         email,
         password,
-      });
-    localStorage.setItem("token", response.data.token);
-    localStorage.setItem("email", response.data.email);
-    localStorage.setItem("id", response.data.id);
-    window.location = "/dashboard";
+      })
+      localStorage.setItem("id", res.id);
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("email", res.email);
+      window.location = "/dashboard";
   } catch (error) {
-    alert(error.response?.data.message);
+    if(
+      error.response && 
+      error.response.status >= 400 && 
+      error.response.status <= 500
+    ){
+      alert(error.response.data.message);
+    }
   }
 };
 

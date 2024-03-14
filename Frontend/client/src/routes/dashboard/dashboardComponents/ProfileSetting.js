@@ -2,29 +2,24 @@ import { useState } from "react";
 import { React } from "react";
 import ProfileNavbar from "./ProfileNavbar";
 import UpdateProfilePic from "./UpdateProfilePic";
-import UpdateProfileInfo from "./UpdateProfileInfo";
 import UpdatePassword from "./UpdatePassword";
 
 const ProfileSetting = ({onClose}) => {
   const [_viewUpdateProfilePic, setViewUpdateProfilePic] = useState(true);
-  const [_viewUpdateProfileInfo, setViewUpdateProfileInfo] = useState(false);
   const [_viewUpdatePassword, setViewUpdatePassword] = useState(false);
 
   const viewUpdateProfilePic = () => {
     setViewUpdateProfilePic(true);
-    setViewUpdateProfileInfo(false);
     setViewUpdatePassword(false);
   }
 
   const viewUpdateProfileInfo = () => {
     setViewUpdateProfilePic(false);
-    setViewUpdateProfileInfo(true);
     setViewUpdatePassword(false);
   }
 
   const viewUpdatePassword = () => {
     setViewUpdateProfilePic(false);
-    setViewUpdateProfileInfo(false);
     setViewUpdatePassword(true);
   }
 
@@ -32,13 +27,11 @@ const ProfileSetting = ({onClose}) => {
     <div className="w-full h-full lg:h-[90%] flex justify-center items-center">
       <div className="w-[90%] min-w-[310px] md:w-[500px] h-[500px] bg-[#1A262D] rounded-[15px] p-[10px] ">
         <ProfileNavbar 
-          onViewUpdateProfilePic = {viewUpdateProfilePic} 
-          onViewUpdateProfileInfo = {viewUpdateProfileInfo}
+          onViewUpdateProfilePic = {viewUpdateProfilePic}
           onViewUpdatePassword = {viewUpdatePassword}
           onClose ={onClose}
         />
         {_viewUpdateProfilePic ? <UpdateProfilePic/> : ""}
-        {_viewUpdateProfileInfo ? <UpdateProfileInfo/> : ""}
         {_viewUpdatePassword ? <UpdatePassword/> : ""}
       </div>
     </div>

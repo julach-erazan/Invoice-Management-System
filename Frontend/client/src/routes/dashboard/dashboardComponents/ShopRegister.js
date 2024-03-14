@@ -63,7 +63,6 @@ const ShopRegister = () => {
           `}
           id="shopName"
           type="text"
-          placeholder="Example Stores"
           value={values.shopName}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -125,7 +124,6 @@ const ShopRegister = () => {
           `}
           id="email"
           type="email"
-          placeholder="example@email.com"
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -144,7 +142,6 @@ const ShopRegister = () => {
           `}
           id="phoneNumber"
           type="text"
-          placeholder="999 999 9999"
           value={values.phoneNumber}
           onChange={handleChange}
           onBlur={handleBlur}

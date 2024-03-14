@@ -6,7 +6,6 @@ import { IoClose } from "react-icons/io5";
 
 const ProfileNavbar = ({
   onViewUpdateProfilePic,
-  onViewUpdateProfileInfo,
   onViewUpdatePassword,
   onClose,
 }) => {
@@ -15,11 +14,6 @@ const ProfileNavbar = ({
       name: "Profile Picture",
       img: <FaCamera className="text-[15px]" />,
       method: onViewUpdateProfilePic,
-    },
-    {
-      name: "Profile Information",
-      img: <FaUser className="text-[15px]" />,
-      method: onViewUpdateProfileInfo,
     },
     {
       name: "Change Password",

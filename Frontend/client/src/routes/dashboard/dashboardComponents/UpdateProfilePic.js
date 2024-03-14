@@ -47,7 +47,7 @@ const UpdateProfilePic = () => {
         <form className="flex" action="POST" onSubmit={handleSubmit}>
           <label
             htmlFor="profilePic"
-            className="w-[120px] h-[36px] flex justify-evenly items-center text-black font-semibold rounded-[13px] bg-[#39db7d] mt-[10px] mr-[10px]"
+            className="w-[120px] h-[36px] cursor-pointer flex justify-evenly items-center text-black font-semibold rounded-[13px] bg-[#39db7d] mt-[10px] mr-[10px]"
           >
             <FaFolderPlus /> Change
           </label>
