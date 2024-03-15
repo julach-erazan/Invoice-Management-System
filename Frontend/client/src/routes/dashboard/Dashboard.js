@@ -7,6 +7,7 @@ import Profile from './dashboardComponents/Profile';
 import ProfileSetting from './dashboardComponents/ProfileSetting';
 import Setting from './dashboardComponents/Setting';
 import ShopSetting from './dashboardComponents/ShopSetting';
+import User from './userComponents/User';
 
 const Dashboard = () => {
 
@@ -20,6 +21,9 @@ const Dashboard = () => {
   const [viewSet, setViewSet] = useState(false);
   const [_viewProfileSet, setViewProfileSet] = useState(false);
   const [_viewShopSet, setViewShopSet] = useState(false);
+
+  const [_viewDashboard, setViewDashboard] = useState(true);
+  const [_viewUser, setViewUser] = useState(false);
 
   useEffect(() => {
     setEmail(localStorage.getItem("email"));
@@ -58,6 +62,9 @@ const Dashboard = () => {
     setViewProfileSet(!_viewProfileSet);
     setViewSet(false);
     setViewShopSet(false);
+
+    setViewDashboard(false);
+    setViewUser(false);
   }
 
   //View Shop Information Update Section
@@ -65,23 +72,64 @@ const Dashboard = () => {
     setViewShopSet(!_viewShopSet);
     setViewSet(false);
     setViewProfileSet(false);
+
+    setViewDashboard(false);
+    setViewUser(false);
   }
 
+  //Close Button
   const close = () =>{
     setViewSet(false);
     setViewProfileSet(false);
     setViewShopSet(false);
+
+    setViewDashboard(true);
+    setViewUser(false);
+  }
+
+  //View Dashboard Section
+  const viewDashboard = () => {
+    setViewSet(false);
+    setViewProfileSet(false);
+    setViewShopSet(false);
+
+    setViewDashboard(true);
+    setViewUser(false);
+  }
+
+  //View Users Section
+  const viewUser = () => {
+    setViewSet(false);
+    setViewProfileSet(false);
+    setViewShopSet(false);
+
+    setViewDashboard(false);
+    setViewUser(true);
   }
 
   const dataObj = {id: id, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}
 
   return (
     <div className='w-screen min-w-[320px] h-screen p-[10px] text-[#fff] font-RubikRegular'>
-      <Navbar {...dataObj} onViewProfile={viewProfile} onViewSetting={viewSetting}/>
+      <Navbar 
+        {...dataObj} 
+        onViewProfile={viewProfile} 
+        onViewSetting={viewSetting}
+
+        onViewDashboard = {viewDashboard}
+        onViewUser = {viewUser}
+      />
+
       {viewProf ? <Profile {...dataObj}/> : "" }
       {viewSet ? <Setting onViewProfileSet = {viewProfileSet} onViewShopSet = {viewShopSet}/> : ""}
       {_viewProfileSet ? <ProfileSetting onClose = {close}/> : ""}
       {_viewShopSet ? <ShopSetting onClose = {close}/> : ""}
+      {_viewUser ? <User/>: ""}
+      {_viewDashboard ? 
+        <div className="w-full h-full lg:h-[90%] flex justify-center items-center">
+          Hello
+        </div>
+      : ""}
     </div>
   )
 }

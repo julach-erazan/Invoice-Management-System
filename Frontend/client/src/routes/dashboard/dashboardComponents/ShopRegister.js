@@ -172,7 +172,7 @@ const ShopRegister = () => {
           className="w-[120px] h-[36px] text-white font-semibold rounded-[13px] bg-[#01579B] mt-[10px]"
           type="submit"
         >
-          Submit
+          Save
         </button>
       </form>
     </div>

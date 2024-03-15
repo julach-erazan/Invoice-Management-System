@@ -1,6 +1,5 @@
 import React from "react";
 import { FaCamera } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 

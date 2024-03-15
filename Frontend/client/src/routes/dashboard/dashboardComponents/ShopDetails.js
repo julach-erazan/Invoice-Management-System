@@ -2,6 +2,7 @@ import { React } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { MdDeleteForever } from "react-icons/md";
 
 const ShopDetails = () => {
   const id = localStorage.getItem("id");
@@ -17,19 +18,40 @@ const ShopDetails = () => {
   const getShopData = async () => {
     try {
       await axios
-        .post("http://localhost:8000/getShopData", {
+        .post("http://localhost:8000/getshopdata", {
           id,
         })
         .then((res) => {
           setShopName(res.data.shopName);
           setLogoPath("http://localhost:8000/Images/" + res.data.logoPath);
-          setShopRegistationNumber(res.data.shopRegistationNumber);
-          setShopEmail(res.data.email);
-          setPhoneNumber(res.data.phoneNumber);
-          setAddress(res.data.address);
+          if (res.data.shopRegistationNumber !== "") {
+            setShopRegistationNumber(res.data.shopRegistationNumber);
+          }
+          if (res.data.email !== "") {
+            setShopEmail(res.data.email);
+          }
+          if (res.data.phoneNumber !== null) {
+            setPhoneNumber("0" + res.data.phoneNumber);
+          }
+          if (res.data.address !== "") {
+            setAddress(res.data.address);
+          }
         });
     } catch (error) {
       return;
+    }
+  };
+
+  const deleteShopData = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8000/deleteshopdata", {
+        id,
+      });
+
+      alert(response.data.message);
+    } catch (error) {
+      alert(error.response?.data.message);
     }
   };
 
@@ -77,6 +99,18 @@ const ShopDetails = () => {
         <h1 className="text-[15px] text-[#E4E4E4] pb-[3px]">Shop Address</h1>
         <h2 className="text-[13px]">{address}</h2>
       </div>
+
+      <form 
+        onSubmit={deleteShopData}
+        action="POST"
+      >
+      <button
+        className="w-[120px] h-[36px] text-white font-semibold rounded-[13px] bg-[#d11a2a] my-[10px] flex justify-evenly items-center"
+        type="submit"
+      >
+        <MdDeleteForever className="text-[20px]"/> Delete
+      </button>
+      </form>
     </div>
   );
 };

@@ -2,10 +2,11 @@ import React from "react";
 import { FaUser } from "react-icons/fa";
 import { RiSettings4Fill } from "react-icons/ri";
 import { TiThMenu } from "react-icons/ti";
+import Menu from "./Menu";
 
-const NavSection = ({ onViewProfile, onViewSetting }) => {
+const NavSection = ({ onViewProfile, onViewSetting, onViewUser, onViewDashboard }) => {
   return (
-    <div className="w-full h-[36px] flex justify-end">
+    <div className="w-[calc(100vw-150px)] h-[36px] flex justify-end">
       <div className="flex md:flex-row-reverse">
         <div className="flex">
           <button
@@ -25,10 +26,16 @@ const NavSection = ({ onViewProfile, onViewSetting }) => {
         </div>
         <div>
           <button
-            className="menu w-[36px] h-[36px] rounded-[12px] bg-[#283943] mx-[10px] flex justify-center items-center text-[20px]"
+            className="w-[36px] h-[36px] rounded-[12px] bg-[#283943] mx-[10px] flex justify-center items-center text-[20px]"
           >
             <TiThMenu />
           </button>
+        </div>
+        <div className="w-[calc(100vw-318px)] h-[36px]">
+          <Menu
+            onViewDashboard = {onViewDashboard} 
+            onViewUser = {onViewUser} 
+          />
         </div>
       </div>
     </div>

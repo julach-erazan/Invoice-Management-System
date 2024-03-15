@@ -93,10 +93,10 @@ const Profile = ({ id, firstName, lastName, email, phoneNumber }) => {
 
       <div className="logout w-full  mt-[25px] mb-[10px] flex justify-center items-center">
         <button
-          className="w-[120px] h-[36px] text-black font-semibold rounded-[13px] bg-[#39DB7D] flex items-center justify-evenly"
+          className="w-[120px] h-[36px] text-[#141E22] font-semibold rounded-[13px] bg-[#39DB7D] flex items-center justify-evenly"
           onClick={handleLogout}
         >
-          <FiLogOut /> Logout
+          <FiLogOut/>Logout
         </button>
       </div>
     </div>

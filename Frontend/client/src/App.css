@@ -30,6 +30,6 @@ input,textarea {
     width: 100%;
   }
 
-  .active{
-    border-color: #fc8181;
+  .menu:hover span{
+    color:#39DB7D;
   }

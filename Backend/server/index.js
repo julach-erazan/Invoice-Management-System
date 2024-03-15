@@ -11,6 +11,8 @@ const getShopRoutes = require("./routes/getShopData");
 const updateProfilePictureRoutes = require("./routes/updateProfilePic");
 const getProfileImageRoutes = require("./routes/getProfileImage");
 const updatePasswordRoutes = require("./routes/updatePassword");
+const deleteShopDataRoutes = require("./routes/deleteShopData");
+const getUserRoutes = require("./routes/getUser");
 
 //database connection
 require("./db")
@@ -32,6 +34,8 @@ app.use('/getShopData', getShopRoutes);
 app.use('/updateprofilepicture', updateProfilePictureRoutes);
 app.use('/getprofileimage', getProfileImageRoutes);
 app.use('/updatepassword', updatePasswordRoutes);
+app.use('/deleteshopdata', deleteShopDataRoutes);
+app.use('/getusers', getUserRoutes);
 
 
 app.listen(port, () => {

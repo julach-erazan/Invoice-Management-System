@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
     // Check if email already exists
     const existingEmail = await UserModel.findOne({ email: email });
     if (existingEmail) {
-      res.status(400).json({ message: "Email already exists!" });
+      res.status(401).json({ message: "Email already exists!" });
       return;
     }
 
@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-    await UserModel.create({ ...req.body, password: hashedPassword, email: email });
+    await UserModel.create({ ...req.body, email: email, password: hashedPassword });
 
     res.status(201).json({ message: "User registered successfully." });
   } catch (error) {

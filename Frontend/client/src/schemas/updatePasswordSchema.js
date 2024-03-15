@@ -7,12 +7,11 @@ export const updatePasswordSchema = yup.object().shape({
     oldPassword: yup.string().required("Required"),
     newPassword: yup
         .string()
-        // .min(8)
-        // .matches(passwordRules, "Please create a strong password")
+        .min(8)
+        .matches(passwordRules, "Please create a strong password")
         .required("Required"),
     confirmPassword: yup
-        // .string()
-        // .oneOf([yup.ref("newPassword"), null], "Please must match")
         .string()
+        .oneOf([yup.ref("newPassword"), null], "Please must match")
         .required("Required"),
 });
