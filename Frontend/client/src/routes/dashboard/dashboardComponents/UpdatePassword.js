@@ -7,7 +7,7 @@ const UpdatePassword = () => {
   const onSubmit = async (value, actions) => {
     actions.resetForm(); //Reset form data
 
-    const id = localStorage.getItem("id");
+    const id = sessionStorage.getItem("id");
     const oldPassword = value.oldPassword;
     const newPassword = value.newPassword;
 
@@ -20,9 +20,9 @@ const UpdatePassword = () => {
         })
         .then((res) => {
           alert(res.data.message);
-          localStorage.removeItem("token");
-          localStorage.removeItem("email");
-          localStorage.removeItem("id");
+          sessionStorage.removeItem("token");
+          sessionStorage.removeItem("email");
+          sessionStorage.removeItem("id");
           window.location = "/";
         });
     } catch (error) {

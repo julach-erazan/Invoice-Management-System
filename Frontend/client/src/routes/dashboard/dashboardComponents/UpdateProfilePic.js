@@ -15,7 +15,7 @@ const UpdateProfilePic = () => {
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("id", localStorage.getItem("id"));
+      formData.append("id", sessionStorage.getItem("id"));
       formData.append("profileImagePath", image);
 
       const response = await axios.post(

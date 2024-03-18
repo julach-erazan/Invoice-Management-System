@@ -1,35 +1,50 @@
-body{
-  background-color: #141E22;
+body {
+  background-color: #141e22;
 }
 
-input,textarea {
-    background-color: #ffffff11;
-    border: 2px solid #ffffff28;
-    color: #fff;
-  }
-  
-  input:focus{
-    outline: none;
-    border: 2px solid #01579B;
-  }
+input,
+textarea {
+  background-color: #ffffff11;
+  border: 2px solid #ffffff28;
+  color: #fff;
+}
 
-  textarea:focus{
-    outline: none;
-    border: 2px solid #01579B;
-  }
+input:focus {
+  outline: none;
+  border: 2px solid #01579b;
+}
 
-  input.input-error,
-  select.input-error{
-    border-color: #fc8181;
-  }
+textarea:focus {
+  outline: none;
+  border: 2px solid #01579b;
+}
 
-  .error{
-    color: #fc8181;
-    font-size: 12px;
-    padding-left: 10px;
-    width: 100%;
-  }
+input.input-error,
+select.input-error {
+  border-color: #fc8181;
+}
 
-  .menu:hover span{
-    color:#39DB7D;
-  }
+textarea.input-error,
+select.input-error {
+  border-color: #fc8181;
+}
+
+select {
+  background-color: #ffffff11;
+  border: 2px solid #ffffff28;
+  color: #fff;
+}
+
+option{
+  background-color: none;
+}
+.error {
+  color: #fc8181;
+  font-size: 12px;
+  padding-left: 10px;
+  width: 100%;
+}
+
+.menu:hover span {
+  color: #39db7d;
+}

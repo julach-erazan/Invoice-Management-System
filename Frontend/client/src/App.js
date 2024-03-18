@@ -10,7 +10,7 @@ function App() {
   const [accessToken, setAccessToken] = useState();
 
   useEffect(() => {
-    setAccessToken(localStorage.getItem("token"));
+    setAccessToken(sessionStorage.getItem("token"));
   }, []);
 
   return (

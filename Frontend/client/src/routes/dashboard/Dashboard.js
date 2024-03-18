@@ -26,8 +26,8 @@ const Dashboard = () => {
   const [_viewUser, setViewUser] = useState(false);
 
   useEffect(() => {
-    setEmail(localStorage.getItem("email"));
-    setId(localStorage.getItem("id"))
+    setEmail(sessionStorage.getItem("email"));
+    setId(sessionStorage.getItem("id"))
   }, [])
 
   axios.post("http://localhost:8000/dashboard",{
@@ -110,7 +110,7 @@ const Dashboard = () => {
   const dataObj = {id: id, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}
 
   return (
-    <div className='w-screen min-w-[320px] h-screen p-[10px] text-[#fff] font-RubikRegular'>
+    <div className='w-screen min-w-[650px] h-screen p-[10px] text-[#fff] font-RubikRegular'>
       <Navbar 
         {...dataObj} 
         onViewProfile={viewProfile} 
@@ -124,12 +124,13 @@ const Dashboard = () => {
       {viewSet ? <Setting onViewProfileSet = {viewProfileSet} onViewShopSet = {viewShopSet}/> : ""}
       {_viewProfileSet ? <ProfileSetting onClose = {close}/> : ""}
       {_viewShopSet ? <ShopSetting onClose = {close}/> : ""}
-      {_viewUser ? <User/>: ""}
+
       {_viewDashboard ? 
         <div className="w-full h-full lg:h-[90%] flex justify-center items-center">
           Hello
         </div>
       : ""}
+      {_viewUser ? <User/>: ""}
     </div>
   )
 }

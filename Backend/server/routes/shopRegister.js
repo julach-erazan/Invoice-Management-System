@@ -36,7 +36,7 @@ router.post("/", upload.single("logoPath"), async (req, res) => {
     } else {
       await ShopModel.updateOne(
         { userId: req.body.userId },
-        { $set: {...req.body, logoPath: req.file.filename} }
+        { $set: { ...req.body, logoPath: req.file.filename } }
       );
       res.status(201).json({ message: "Update Successfully" });
     }

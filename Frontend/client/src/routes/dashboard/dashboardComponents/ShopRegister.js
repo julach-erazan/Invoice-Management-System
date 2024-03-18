@@ -78,7 +78,7 @@ const ShopRegister = () => {
           id="logoPath"
           name='logoPath'
           type="file"
-          className={`w-full h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[5px] mb-[10px]
+          className={`w-full h-[30px] rounded-[8px] text-[13px] placeholder:text-[13px] px-[10px] py-[2px] mb-[10px]
           ${
             errors.logoPath && touched.logoPath
               ? "input-error"

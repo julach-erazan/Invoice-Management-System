@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 
 const ShopDetails = () => {
-  const id = localStorage.getItem("id");
+  const id = sessionStorage.getItem("id");
   const [shopName, setShopName] = useState("[Your Shop Name]");
   const [logoPath, setLogoPath] = useState("Images/blanckImage.png");
   const [shopRegistationNumber, setShopRegistationNumber] = useState(

@@ -7,9 +7,9 @@ const formLogin = async (email, password) => {
         email,
         password,
       })
-      localStorage.setItem("id", res.id);
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("email", res.email);
+      sessionStorage.setItem("id", res.id);
+      sessionStorage.setItem("token", res.token);
+      sessionStorage.setItem("email", res.email);
       window.location = "/dashboard";
   } catch (error) {
     if(

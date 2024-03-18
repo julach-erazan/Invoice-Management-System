@@ -40,9 +40,9 @@ const Profile = ({ id, firstName, lastName, email, phoneNumber }) => {
   ];
 
   const handleLogout = async () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    localStorage.removeItem("id");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("id");
     window.location = "/";
   };
   return (

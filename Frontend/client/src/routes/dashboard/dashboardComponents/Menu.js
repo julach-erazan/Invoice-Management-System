@@ -23,7 +23,7 @@ const Menu = ({ onViewUser, onViewDashboard }) => {
     },
   ];
   return (
-    <div className="w-full h-full flex justify-center items-center mr-[10px]">
+    <div className="w-full min-w-[350px] h-full flex justify-center items-center mr-[10px]">
       <ul className="w-full flex justify-end">
         {Links.map((link) => (
           <li key={link.name}>
