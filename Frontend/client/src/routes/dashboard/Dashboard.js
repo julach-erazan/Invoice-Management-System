@@ -7,7 +7,8 @@ import Profile from './dashboardComponents/Profile';
 import ProfileSetting from './dashboardComponents/ProfileSetting';
 import Setting from './dashboardComponents/Setting';
 import ShopSetting from './dashboardComponents/ShopSetting';
-import User from './userComponents/User';
+import Stocks from './stockComponents/Stocks';
+import Employee from './employeeComponents/Employee';
 
 const Dashboard = () => {
 
@@ -24,6 +25,7 @@ const Dashboard = () => {
 
   const [_viewDashboard, setViewDashboard] = useState(true);
   const [_viewUser, setViewUser] = useState(false);
+  const [_viewStocks, setViewStocks] = useState(false);
 
   useEffect(() => {
     setEmail(sessionStorage.getItem("email"));
@@ -64,6 +66,7 @@ const Dashboard = () => {
     setViewShopSet(false);
 
     setViewDashboard(false);
+    setViewStocks(false);
     setViewUser(false);
   }
 
@@ -74,6 +77,7 @@ const Dashboard = () => {
     setViewProfileSet(false);
 
     setViewDashboard(false);
+    setViewStocks(false);
     setViewUser(false);
   }
 
@@ -84,6 +88,7 @@ const Dashboard = () => {
     setViewShopSet(false);
 
     setViewDashboard(true);
+    setViewStocks(false);
     setViewUser(false);
   }
 
@@ -94,6 +99,18 @@ const Dashboard = () => {
     setViewShopSet(false);
 
     setViewDashboard(true);
+    setViewStocks(false);
+    setViewUser(false);
+  }
+
+  //View Stocks Section
+  const viewStocks = () => {
+    setViewSet(false);
+    setViewProfileSet(false);
+    setViewShopSet(false);
+
+    setViewDashboard(false);
+    setViewStocks(true);
     setViewUser(false);
   }
 
@@ -104,6 +121,7 @@ const Dashboard = () => {
     setViewShopSet(false);
 
     setViewDashboard(false);
+    setViewStocks(false);
     setViewUser(true);
   }
 
@@ -118,6 +136,7 @@ const Dashboard = () => {
 
         onViewDashboard = {viewDashboard}
         onViewUser = {viewUser}
+        onViewStocks = {viewStocks}
       />
 
       {viewProf ? <Profile {...dataObj}/> : "" }
@@ -126,11 +145,12 @@ const Dashboard = () => {
       {_viewShopSet ? <ShopSetting onClose = {close}/> : ""}
 
       {_viewDashboard ? 
-        <div className="w-full h-full lg:h-[90%] flex justify-center items-center">
+        <div className="w-full h-full lg:h-[90%] flex justify-center items-center overflow-y-scroll">
           Hello
         </div>
       : ""}
-      {_viewUser ? <User/>: ""}
+      {_viewUser ? <Employee/>: ""}
+      {_viewStocks ? <Stocks/> : ""}
     </div>
   )
 }

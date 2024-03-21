@@ -13,11 +13,6 @@ const ProfileSetting = ({onClose}) => {
     setViewUpdatePassword(false);
   }
 
-  const viewUpdateProfileInfo = () => {
-    setViewUpdateProfilePic(false);
-    setViewUpdatePassword(false);
-  }
-
   const viewUpdatePassword = () => {
     setViewUpdateProfilePic(false);
     setViewUpdatePassword(true);

@@ -1,19 +1,19 @@
 import React from "react";
-import { GrDocumentUpdate } from "react-icons/gr";
-import { FaShoppingCart } from "react-icons/fa";
+import { MdOutlineAddToPhotos } from "react-icons/md";
+import { MdOutlineAddCard } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 
-const ShopNavbar = ({onViewDetails, onViewUpdate, onClose}) => {
+const ShopNavbar = ({ onViewAddStocks, onViewBrand, onClose }) => {
   let Links = [
     {
-      name: "Shop Details",
-      img: <FaShoppingCart className="text-[15px]" />,
-      method: onViewDetails,
+      name: "Add Brands",
+      img: <MdOutlineAddToPhotos className="text-[15px]" />,
+      method: onViewBrand,
     },
     {
-      name: "Add Shop Details",
-      img: <GrDocumentUpdate className="text-[15px]" />,
-      method: onViewUpdate,
+      name: "Add Stocks",
+      img: <MdOutlineAddCard className="text-[15px]" />,
+      method: onViewAddStocks,
     },
     {
       name: "Close",

@@ -4,7 +4,7 @@ import { RiSettings4Fill } from "react-icons/ri";
 import { TiThMenu } from "react-icons/ti";
 import Menu from "./Menu";
 
-const NavSection = ({ onViewProfile, onViewSetting, onViewUser, onViewDashboard }) => {
+const NavSection = ({ onViewProfile, onViewSetting, onViewUser, onViewDashboard, onViewStocks }) => {
   return (
     <div className="w-[calc(100vw-150px)] h-[36px] flex justify-end">
       <div className="flex md:flex-row-reverse">
@@ -33,7 +33,8 @@ const NavSection = ({ onViewProfile, onViewSetting, onViewUser, onViewDashboard 
         </div>
         <div className="w-[calc(100vw-318px)] h-[36px]">
           <Menu
-            onViewDashboard = {onViewDashboard} 
+            onViewDashboard = {onViewDashboard}
+            onViewStocks = {onViewStocks}
             onViewUser = {onViewUser} 
           />
         </div>

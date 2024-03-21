@@ -2,7 +2,7 @@ import React from 'react'
 import NavSection from './NavSection'
 import TimeZone from './TimeZone'
 
-const Navbar = ({firstName, onViewProfile, onViewSetting, onViewUser, onViewDashboard}) => {
+const Navbar = ({firstName, onViewProfile, onViewSetting, onViewUser, onViewDashboard, onViewStocks}) => {
   return (
     <div className='w-full'>
       <TimeZone/>
@@ -13,6 +13,7 @@ const Navbar = ({firstName, onViewProfile, onViewSetting, onViewUser, onViewDash
           onViewSetting={onViewSetting}
           
           onViewDashboard = {onViewDashboard}
+          onViewStocks = {onViewStocks}
           onViewUser = {onViewUser}
         />
       </div>

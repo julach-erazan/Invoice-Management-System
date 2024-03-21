@@ -15,7 +15,9 @@ const Profile = ({ id, firstName, lastName, email, phoneNumber }) => {
         id,
       })
       .then(res =>{
-        setProfileImage("http://localhost:8000/Images/" + res.data);
+        if(res.data !== ""){
+          setProfileImage("http://localhost:8000/Images/" + res.data);
+        }
       })
     } catch (error) {
       return;

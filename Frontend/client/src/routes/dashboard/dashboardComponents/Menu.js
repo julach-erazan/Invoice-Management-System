@@ -3,7 +3,7 @@ import { RiDashboard3Fill } from "react-icons/ri";
 import { AiOutlineStock } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 
-const Menu = ({ onViewUser, onViewDashboard }) => {
+const Menu = ({ onViewUser, onViewDashboard, onViewStocks }) => {
   let Links = [
     {
       name: "Dashboard",
@@ -13,7 +13,7 @@ const Menu = ({ onViewUser, onViewDashboard }) => {
     {
       name: "Stocks",
       img: <AiOutlineStock className="text-[15px]" />,
-      method: onViewUser,
+      method: onViewStocks,
     },
 
     {
